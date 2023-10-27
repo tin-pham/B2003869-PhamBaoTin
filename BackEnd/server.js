@@ -16,8 +16,11 @@ app.use(
 );
 
 app.use("/user", require("./routes/user.router"));
+app.use("/api", require("./routes/category.router"));
+app.use("/api", require("./routes/product.router"));
+app.use("/api", require("./routes/upload.router"));
 
-const URI = "mongodb://localhost:27017/test";
+const URI = "mongodb://localhost:27017/test2";
 mongoose.connect(URI, (err) => {
   if (err) console.log(err);
   console.log(`Connected to MongoDB`);
