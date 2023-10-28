@@ -162,7 +162,7 @@ const productController = {
     return res.json(products.length);
   },
   getDetailProduct: async (req, res) => {
-    const product = await Product.findOne({ id: req.params.id });
+    const product = await Product.findOne({ product_id: req.params.id });
     // get all products
     return res.json(product);
   },

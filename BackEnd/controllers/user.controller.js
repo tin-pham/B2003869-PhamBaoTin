@@ -138,33 +138,26 @@ const userController = {
       const { userId, quantity, product } = req.body;
       const userDB = await User.findById(userId);
       const { cart } = userDB;
-      console.log(cart);
 
-      // Check if product already exists in cart
       for (let i = 0; i < cart.length; i++) {
         if (cart[i].item.product_id === product.product_id) {
-          return res.status(400).json({ msg: "Sản phẩm đã tồn tại !" });
+          return res.status(400).json({ msg: "Product already exist" });
         }
       }
 
-      // Add product and quantity to user's cart
       userDB.cart.push({
         item: product,
         number: quantity,
       });
 
-      // Check if quantity is greater than zero
       if (quantity <= 0) {
         return res
           .status(400)
-          .json({ msg: "Số lượng không được bằng không !" });
+          .json({ msg: "Quantity must be greater than zero" });
       }
 
-      // Update user's cart in database
       await User.findOneAndUpdate({ _id: userId }, { cart: userDB.cart });
-
-      // Return success response with updated user data
-      return res.json({ msg: "Sản phẩm đã được thêm thành công!" });
+      return res.json({ msg: "Add product success" });
     } catch (err) {
       // Return error response with error message
       return res.status(500).json({ msg: err.message });
@@ -199,7 +192,7 @@ const userController = {
       const { cart } = userDB;
 
       if (cart.length === 0) {
-        return res.status(400).json({ msg: "Không có sản phẩm để thanh toán" });
+        return res.status(400).json({ msg: "Don't have any item" });
       }
       // // Update user's cart in database
       await User.findOneAndUpdate({ _id: userId }, { cart: [] });

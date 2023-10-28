@@ -5,6 +5,7 @@ import LoginView from '@/views/LoginView.vue';
 import ItemView from '@/views/ItemView.vue';
 import InfoView from '@/views/InfoView.vue';
 import ProfileComponent from '@/pages/ProfileComponent.vue';
+import CartComponent from '@/pages/CartComponent.vue';
 
 const routes = [
   {
@@ -27,6 +28,10 @@ const routes = [
         path: '/profile',
         name: 'profile',
         component: ProfileComponent,
+      },
+      {
+        path: '/cart',
+        component: CartComponent,
       },
     ],
   },

@@ -3,7 +3,10 @@
     <div class="row">
       <ul class="list-group list-group-flush col-3">
         <router-link to="profile" class="list-group-item list-group-item-action">Profile</router-link>
+
+        <router-link to="cart" class="list-group-item list-group-item-action"> Cart </router-link>
       </ul>
+
       <div class="col-9">
         <router-view></router-view>
       </div>

@@ -64,7 +64,7 @@ export default {
         };
         const addProduct = await API.addProduct(ProductInCart);
 
-        alert(addProduct);
+        alert('Add product success');
       } catch (err) {
         alert(err.response.data.msg);
       }
